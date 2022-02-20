@@ -16,12 +16,12 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :person, :room_name, :room_introduction, :room_charge, :room_image, :room_id))
+    @reservation = Reservation.new(params.require(:reservation).permit(:start, :end, :person, :room_name, :room_introduction, :room_charge, :room_image, :room_id))
     if @reservation.save
       flash[:notice] = "新規予約をしました"
       redirect_to :rooms
     else
-      render "new"
+      render template: "home/top"
     end
   end
 

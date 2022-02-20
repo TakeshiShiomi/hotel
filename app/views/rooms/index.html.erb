@@ -9,7 +9,6 @@
       <th>開始日</th>
       <th>終了日</th>
       <th>作成日時</th>
-      <th>写真</th>
     </tr>
   </thead>
 
@@ -19,10 +18,9 @@
         <td><%= reservation.room_name %></td>
         <td><%= reservation.room_introduction %></td>
         <td><%= reservation.room_charge %></td>
-        <td><%= reservation.start_date %></td>
-        <td><%= reservation.end_date %></td>
+        <td><%= reservation.start %></td>
+        <td><%= reservation.end %></td>
         <td><%= reservation.updated_at %></td>
-        <td><%= reservation.room_image %></td>
       </tr>
     <% end %>
   </tbody>

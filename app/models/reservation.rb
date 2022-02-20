@@ -1,6 +1,7 @@
 class Reservation < ApplicationRecord
     belongs_to :room
-    validates :start_date, presence: true
-    validates :end_date, presence: true
+    has_one_attached :image
+    validates :start, presence: true
+    validates :end, presence: true
     validates :person, presence: true
 end

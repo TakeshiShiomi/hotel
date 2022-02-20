@@ -23,7 +23,7 @@
       <% if room.image.attached? %>
       <td><%= link_to image_tag(room.image, class:"card-img-top"), room %></td>
       <% else %>
-      <td><%= link_to image_tag("https://placehold.jp/300x300.png", class:"card-img-top"), room%></td>
+      <td><%= room.created_at %></td>
       <% end %>
       </tr>
     <% end %>
