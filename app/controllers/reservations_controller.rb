@@ -21,7 +21,9 @@ class ReservationsController < ApplicationController
       flash[:notice] = "新規予約をしました"
       redirect_to :rooms
     else
-      render template: "home/top"
+      # Failure
+      flash[:danger] = @reservation.errors.full_messages
+      redirect_to request.referer
     end
   end
 
