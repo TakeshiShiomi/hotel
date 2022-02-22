@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hotel</title>
+    <title>HotelApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,92 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <% if user_signed_in? %>
+      <div class="container-fluid">
+        <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png", class:"navbar-brand"),home_top_path %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+              <%= f.text_field :address, :placeholder => "エリア検索" %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+            <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+              <%= f.text_field :name, :placeholder => "キーワード検索" %>
+              <% end %>
+            </li>
+          </ul>
+          </div>
+            <div class="text-right"><%= current_user.name %>
+          </div>
+          <form class="d-flex">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <% if current_user.image.attached? %>
+              <img src="<%= current_user.image %>"  alt="" width="30" height="24"> 
+              <% else %>
+              <img src="https://placehold.jp/30x24.png"  alt="" width="30" height="24"> 
+              <% end %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "ルーム登録", new_room_path, class:"dropdown-item" %>
+                <%= link_to "予約済みルーム一覧", rooms_path, class:"dropdown-item" %>
+                <%= link_to "登録済みルーム一覧", "/users/#{current_user.id}", class:"dropdown-item"  %>
+                <%= link_to "アカウント設定", users_path, class:"dropdown-item" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+              </ul>
+            </li>
+          </form>
+        </div>
+      </div>
+
+    <% else %>
+      <div class="container-fluid">
+        <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png", class:"navbar-brand"),home_top_path %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+          <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+            <%= f.text_field :address, :placeholder => "エリア検索" %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+          <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+            <%= f.text_field :name, :placeholder => "キーワード検索" %>
+            <% end %>
+         </li>
+       </ul>
+          <form class="d-flex">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg" alt="" width="30" height="24"> 
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "ログイン", new_user_session_path, class:"dropdown-item" %>
+              <%= link_to "新規登録", new_user_registration_path, class:"dropdown-item" %>              </ul>
+            </li>
+          </form>
+        </div>
+      </div>
+    <% end %>
+  </nav>
+
+  
+  </header>
+  <%= yield %>
+
+  <footer>
+    <h1>Syukuhaku 2022</h1>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2022-02-18 21:52:32
+  end: 2022-02-18 21:52:32
+  room_id: 1
+  room_name: MyString
+  room_charge: 1
+  room_introduction: 1
+  room_image: MyString
+  person: 1
+
+two:
+  start: 2022-02-18 21:52:32
+  end: 2022-02-18 21:52:32
+  room_id: 1
+  room_name: MyString
+  room_charge: 1
+  room_introduction: 1
+  room_image: MyString
+  person: 1

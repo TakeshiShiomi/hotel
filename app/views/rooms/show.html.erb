@@ -1,0 +1,56 @@
+<h3>新規予約</h3>
+
+<% if flash[:danger].present? %>
+<% flash.each do |message_type, messages| %>
+  <% messages.each do |message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+ <% end %>
+<% end %>
+
+<table>
+  <tr>
+    <th>ルーム名</th>
+    <td><%= @room.name %></td>
+  </tr>
+  <tr>
+    <th>ルーム紹介</th>
+    <td><%= @room.introduction %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td>¥<%= @room.charge %>/日</td>
+  </tr>
+  <tr>
+    <th>写真</th>
+    <td><%= image_tag @room.image %></td>
+  </tr>
+
+  <%= form_with model: @reservation do |f| %>
+    <table>
+    <tr>
+      <th><%= f.label :start, "開始日" %></th>
+      <td><%= f.date_field :start %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :end, "終了日" %></th>
+      <td><%= f.date_field :end %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :person, "人数" %></th>
+      <td><%= f.number_field :person %></td>
+    </tr>
+  </table>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :room_name, value: @room.name %>
+  <%= f.hidden_field :room_introduction, value: @room.introduction %>
+  <%= f.hidden_field :room_charge, value: @room.charge %>
+  <%= f.hidden_field :room_image, value: @room.image %>
+  <div>
+    <ul>
+      <li><%= f.submit "予約する"%></li>
+    </ul>
+  </div>
+  <% end %>

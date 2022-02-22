@@ -1,0 +1,19 @@
+<h3>検索結果</h3>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<% @rooms.each do |room| %>
+  <div class="col">
+    <div class="card h-100">
+    <% if room.image.attached? %>
+    <%= link_to image_tag(room.image, class:"card-img-top"), room %>
+    <% else %>
+    <%= link_to image_tag("https://placehold.jp/300x300.png", class:"card-img-top"), room%>
+    <% end %>
+      <div class="card-body">
+        <%= link_to room.name, room %>
+        <p class="card-text"><%= room.address %></p>
+        <p class="card-text">¥<%= room.charge %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

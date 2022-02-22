@@ -1,0 +1,32 @@
+<h3>予約一覧</h3>
+ 
+<% if flash[:notice] %>
+<p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム名</th>
+      <th>ルーム紹介</th>
+      <th>合計料金</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>作成日時</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.room_name %></td>
+        <td><%= reservation.room_introduction %></td>
+        <td><%= reservation.room_charge %></td>
+        <td><%= reservation.start %></td>
+        <td><%= reservation.end %></td>
+        <td><%= reservation.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

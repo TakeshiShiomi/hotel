@@ -1,0 +1,34 @@
+<h3>予約内容確認</h3>
+ 
+<table>
+  <tr>
+    <th>開始日</th>
+    <td><%= @reservation.startdate %></td>
+  </tr>
+  <tr>
+    <th>終了日<</th>
+    <td><%= @reservation.enddate %></td>
+  </tr>
+  <tr>
+    <th>使用日数</th>
+    <td><%= @reservation.person %></td>
+  </tr>
+  <tr>
+    <th>人数</th>
+    <td><%= @reservation.person %></td>
+  </tr>
+  <tr>
+    <th>合計金額</th>
+    <td><%= @reservation.person %></td>
+  </tr>
+</table>
+
+<%= form_for @reserve do |f| %>
+	<%= form.submit '送信する' %>
+<% end %>
+
+<div>
+<%= f.submit '投稿画面に戻る', name: 'back' %>
+</div>
+
+
