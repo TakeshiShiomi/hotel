@@ -25,6 +25,7 @@
     <th>写真</th>
     <td><%= image_tag @room.image %></td>
   </tr>
+
   <%= form_with model: @reservation do |f| %>
     <table>
     <tr>
@@ -49,7 +50,7 @@
   <%= f.hidden_field :room_image, value: @room.image %>
   <div>
     <ul>
-      <li><%= f.submit "確認画面へ"%></li>
+      <li><%= f.submit "予約する"%></li>
     </ul>
   </div>
   <% end %>

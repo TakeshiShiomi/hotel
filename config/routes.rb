@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => 'home#top'
   get 'reservations/index'
   get 'rooms/index'
   get 'home/top'

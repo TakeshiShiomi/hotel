@@ -11,7 +11,8 @@ class ReservationsController < ApplicationController
   def confirm
     @reservation = Reservation.new(@reservation)
     if @reservation.invalid?
-      render :new 
+      flash[:danger] = @reservation.errors.full_messages
+      redirect_to request.referer
     end
   end
 
